@@ -30,10 +30,14 @@ class PostController extends Controller
         $data = Post::with('user','category')
                 ->orderBy('created_at', 'desc');
         return PostResource::collection($data->paginate(8))->response();
-        // return response()->json([
-        //     'message' => 'success',
-        //     'data' => $data
-        // ]);
+    }
+
+    public function detail($id)
+    {
+        $data = Post::find($id)
+                ->with('user','category')
+                ->first();
+        return new PostResource($data);
     }
     
     public function delete($id)

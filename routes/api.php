@@ -10,6 +10,7 @@ use App\Http\Controllers\CategoryController;
 
 Route::controller(PostController::class)->group(function(){
     Route::get('posts', 'show');
+    Route::get('post/{id}', 'detail');
     Route::post('post', 'store');
     Route::delete('post/{id}', 'delete');
     Route::put('post/edit/{id}', 'update');
