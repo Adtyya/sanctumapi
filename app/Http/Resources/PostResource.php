@@ -16,14 +16,16 @@ class PostResource extends JsonResource
     {
         $category = $this->whenLoaded('category');
         $author = $this->whenLoaded('user');
+        $comment = $this->whenLoaded('comment');
         return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'body' => $this->body,
-            'image' => $this->image,
-            'created_at' => $this->created_at,
-            'category' => new CategoryResource($category),
-            'post_author' => new UserResource($author),
+            'id'            => $this->id,
+            'title'         => $this->title,
+            'body'          => $this->body,
+            'image'         => $this->image,
+            'created_at'    => $this->created_at,
+            'category'      => new CategoryResource($category),
+            'post_author'   => new UserResource($author),
+            'comment'       => CommentResource::collection($comment),
         ];
     }
 }
