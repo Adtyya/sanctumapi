@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Tes;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Faker\Generator as Faker;
