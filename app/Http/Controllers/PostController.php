@@ -27,7 +27,7 @@ class PostController extends Controller
 
     public function show()
     {
-        $data = Post::with('user','category')
+        $data = Post::with('user','category','comment')
                 ->orderBy('created_at', 'desc');
         return PostResource::collection($data->paginate(8))->response();
     }
@@ -39,7 +39,7 @@ class PostController extends Controller
                 ->first();
         return new PostResource($data);
     }
-    
+
     public function delete($id)
     {
         $find = Post::find($id);
